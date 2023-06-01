@@ -8,7 +8,7 @@
 #include "Parser.h"
 
 int main() {
-    std::ifstream t("c:\\Users\\jarvi\\Documents\\Paradox Interactive\\Europa Universalis IV\\save games\\lubeck.eu4");
+    std::ifstream t("source");
     std::stringstream buffer;
     buffer << t.rdbuf();
     std::string input = buffer.str();
@@ -24,7 +24,7 @@ int main() {
     std::unique_ptr<Node> ast = parser.parse();
     std::cout << "Done! " << std::endl;
     std::string json = ast->toJSON();
-    std::ofstream wf("student.dat", std::ios::out);
+    std::ofstream wf("data.json", std::ios::out);
     wf << json;
     wf.close();
     std::cout << json.length() << std::endl;
