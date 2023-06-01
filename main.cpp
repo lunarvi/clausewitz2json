@@ -8,7 +8,7 @@
 #include "Parser.h"
 
 int main() {
-    std::ifstream t("source");
+    std::ifstream t("input.eu4");
     std::stringstream buffer;
     buffer << t.rdbuf();
     std::string input = buffer.str();
@@ -27,7 +27,6 @@ int main() {
     std::ofstream wf("data.json", std::ios::out);
     wf << json;
     wf.close();
-    std::cout << json.length() << std::endl;
 
     return 0;
 }

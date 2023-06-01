@@ -8,9 +8,14 @@ std::unique_ptr<ObjectNode> Parser::parseMap() {
     std::unique_ptr<ObjectNode> object = std::make_unique<ObjectNode>();
     std::unique_ptr<Node> value;
     std::string key = "key";
+    std::unordered_map<std::string, int> key_usage_count;
     while (currentToken.type != TokenType::CLOSE_BRACE && currentToken.type != TokenType::END_OF_FILE) {
         if (currentToken.type == TokenType::IDENTIFIER) {
             key = currentToken.value;
+            key_usage_count[key]++;
+            if(key_usage_count[key]>1){
+                key += "." + std::to_string(key_usage_count[key]);
+            }
         }
         getNextToken();
         expect(TokenType::EQUAL);

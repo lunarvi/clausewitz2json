@@ -3,7 +3,7 @@
 std::string ArrayNode::toJSON() const {
     std::string result = "[";
     for (auto &value: values) {
-        if (result.size() > 1) result += ", ";
+        if (result.size() > 1) result += ",";
         result += value->toJSON();
     }
     result += "]";
@@ -29,9 +29,9 @@ std::string ObjectNode::toJSON() const {
     for (const auto &pair: children) {
         //We initialize result with length 1. If it's
         // larger than that, it means that the first element has already been added.
-        if (result.size() > 1) result += ", ";
+        if (result.size() > 1) result += ",";
         //first -> key, second -> value(<Node>)
-        result += '"' + pair.first + "\": " + pair.second->toJSON();
+        result += '"' + pair.first + "\":" + pair.second->toJSON();
     }
     result += "}";
     return result;

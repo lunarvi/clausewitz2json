@@ -2,7 +2,7 @@
 #include <codecvt>
 #include "Lexer.h"
 #include "Token.h"
-
+#include <iostream>
 Lexer::Lexer(std::string s) : source(std::move(s)), position(0), counter(0) {}
 
 size_t Lexer::getPosition() const { return position; }
@@ -23,8 +23,18 @@ Token Lexer::getNextToken() {
     if (position >= source.length()) {
         return Token(TokenType::END_OF_FILE, "");
     }
-
     unsigned char current = source[position];
+
+    //Skip comments
+    if (current == '#') {
+        do {
+            position++;
+            current = source[position];
+        } while (current!='\r' && current!='\n' && position < source.length());
+        position++;
+        current = source[position];
+    }
+
     if (current == '=') {
         position++;
         return Token(TokenType::EQUAL, "=");
@@ -82,7 +92,7 @@ bool Lexer::isString(unsigned char ch, bool in_quotations) {
     char dot = '.';
     char quotations = '"';
     bool isString =
-            std::iswalnum(ch) || in_quotations || ch == underscore || ch == dot || ch == quotations || ch == hyphen;
+            std::isalnum(ch) || in_quotations || ch == underscore || ch == dot || ch == quotations || ch == hyphen;
     return isString;
 }
 
