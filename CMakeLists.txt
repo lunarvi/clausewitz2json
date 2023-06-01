@@ -3,4 +3,4 @@ project(parser2)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(parser2 main.cpp TokenType.h Node.h Lexer.h Token.h Lexer.cpp Token.cpp TokenType.cpp Node.cpp)
+add_executable(parser2 main.cpp TokenType.h Node.h Lexer.h Token.h Lexer.cpp Token.cpp TokenType.cpp Node.cpp Parser.h Parser.cpp)

@@ -16,10 +16,10 @@ std::string ValueNode::toJSON() const {
     if (std::all_of(value.begin(), value.end(), ::isdigit))
         return value;
     else {
+        //Some strings in the game are already enclosed in quotation marks, so let's not do it twice.
         if(value.find('"')!=-1){
             return value;
         }
-
         return '"' + value + '"';
     }
 }

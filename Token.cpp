@@ -5,6 +5,7 @@ Token::Token(TokenType type, std::string value) : type(type), value(std::move(va
 TokenType Token::getType() const {
     return type;
 }
+//For debug purposes
 std::string Token::getTypeString() const {
     switch (type) {
         case TokenType::EQUAL:

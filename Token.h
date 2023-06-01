@@ -1,5 +1,5 @@
-#ifndef TOKEN_H
-#define TOKEN_H
+#ifndef C2J_TOKEN_H
+#define C2J_TOKEN_H
 
 #include <string>
 #include "TokenType.h"

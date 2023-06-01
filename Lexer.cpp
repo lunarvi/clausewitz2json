@@ -1,11 +1,9 @@
 #include <stdexcept>
-#include <iostream>
-#include <locale>
 #include <codecvt>
 #include "Lexer.h"
 #include "Token.h"
 
-Lexer::Lexer(std::string s) : source(std::move(s)), position(0),counter(0) {}
+Lexer::Lexer(std::string s) : source(std::move(s)), position(0), counter(0) {}
 
 size_t Lexer::getPosition() const { return position; }
 
@@ -14,10 +12,12 @@ void Lexer::setPosition(size_t pos) {
 }
 
 Token Lexer::getNextToken() {
-  //  auto start = high_resolution_clock::now();
+    //  auto start = high_resolution_clock::now();
 
     // Skip whitespace
     skipWhitespace();
+
+
 
     // If we're at the end of the input, return an END_OF_FILE token
     if (position >= source.length()) {

@@ -1,7 +1,5 @@
-// TokenType.h
-
-#ifndef TOKEN_TYPE_H
-#define TOKEN_TYPE_H
+#ifndef C2J_TOKEN_TYPE_H
+#define C2J_TOKEN_TYPE_H
 
 #include <array>
 #include <string>
